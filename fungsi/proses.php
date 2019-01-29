@@ -3,6 +3,7 @@ session_start();
 include('koneksi.php');
 include('model.php');
 $sesi_id = sesi_id(32);
+$token = $_SESSION['sesi_id'];
 function no_sql($data){
     include('koneksi.php');
     $data   =   trim($data);
@@ -74,8 +75,6 @@ if(isset($_GET['gantiPass'])){
     $token = $_SESSION['sesi_id'];
     $username = $_GET['gantiPass'];
     query(gantiPass($username,$password));
-    // $kueri = "UPDATE admin SET password='$password' WHERE username ='$username'";
-    // mysqli_query(koneksi(),$kueri);
     header("location:../view/index2.php?t=$token&p=akun");
 }
 if(isset($_GET['gantiProfil'])){
@@ -85,6 +84,30 @@ if(isset($_GET['gantiProfil'])){
     $nama = $_POST['nama'];
     query(gantiProfil($user,$nama,$username));
     header("location:../view/index2.php?t=$token&p=akun");
+}
+if(isset($_GET['resetPass'])){
+    $username = $_GET['resetPass'];
+    query(resetPass($username));
+    header("location:../view/index2.php?t=$token&p=desa-kelurahan");
+}
+if(isset($_GET['addDesa'])){
+    var_dump($_POST);
+    $nama_desa = no_sql($_POST['daerah']);
+    $jenis = null;
+    if($_POST['jenis'] == "Desa"){
+        $jenis = 2;
+    }else{
+        $jenis = 1;
+    }
+    $kades = no_sql($_POST['kades']);
+    query(addDesa($nama_desa,$jenis,$kades));
+    header("location:../view/index2.php?t=$token&p=desa-kelurahan");
+}
+if (isset($_GET['editDesa'])) {
+    $kades = no_sql($_POST['kepala_daerah']);
+    $id = $_GET['editDesa'];
+    query(editDesa($kades,$id));
+    header("location:../view/index2.php?t=$token&p=desa-kelurahan");
 }
 
 ?>

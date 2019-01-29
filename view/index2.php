@@ -67,6 +67,9 @@
         <p>Data masuk hari ini</p>
         <p>Data masuk kemarin</p>
         <p>Data Total</p>
+        <?php if($_SESSION['level'] == 1){ ?>
+        <p>Admin yang Online : <?php echo mysqli_num_rows(query(getOnline())) ?> </p>
+        <?php }?>
     </div>
 </div>
 <div class="wrapper">

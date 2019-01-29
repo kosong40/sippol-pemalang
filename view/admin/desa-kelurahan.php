@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-sm-6">
             <h3>Daftar Desa atau Kelurahan</h3>
+            <p>Tambah Desa Kelurahan <a href="#addDesa" data-toggle="modal" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span></a></p>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="data">
                     <thead>
@@ -31,7 +32,35 @@
                             <td><?php echo $row['nama_daerah'] ?></td>
                             <td><?php echo $jenis?></td>
                             <td><?php echo $row['kepala_daerah']?></td>
-                            <td></td>
+                            <td>
+                            <a class="btn btn-warning btn-sm" data-toggle="modal" href="#editDesa<?php echo $row['id_daerah']?>"><span class="fa fa-pencil"></span></a>
+                            <div class="modal fade" id="editDesa<?php echo $row['id_daerah']?>">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">Edit Daerah <?php echo $row['nama_daerah'] ?></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                            <form action="../fungsi/proses.php?editDesa=<?php echo $row['id_daerah']?>" method="post">
+                                                <div class="form-group">
+                                                    <label for="">Nama Daerah</label>
+                                                    <input required type="text" readonly name="nama_daerah" placeholder="Nama Daerah" id="" class="form-control" value="<?php echo $row['nama_daerah'] ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Nama Kepala Daerah</label>
+                                                    <input required type="text" name="kepala_daerah" placeholder="Nama Daerah" id="" class="form-control" value="<?php echo $row['kepala_daerah'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         <?php } ?>
                     </tbody>
@@ -65,41 +94,32 @@
                             
                             <td>
                                 <?php if(password_verify($row['username'],$row['password'])){
-                                    echo "belum diganti";
+                                    echo "Sama";
                                 }else{
-                                    echo "sudah diganti";
+                                    echo "Berbeda";
                                 } ?>
                             </td>
                             <td>
-                                <a class="btn btn-warning btn-sm" data-toggle="modal" href="#editAdmin<?php echo $row['id']?>"><span class="fa fa-pencil"></span></a>
+                                <?php if(password_verify($row['username'],$row['password'])){
+                                    echo "";
+                                }else{?>
+                                     <a class="btn btn-warning btn-sm" data-toggle="modal" href="#editAdmin<?php echo $row['id']?>"><span class="fa fa-pencil"></span></a>
                                 <div class="modal fade" id="editAdmin<?php echo $row['id']?>">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title">Ubah akun <?php echo $row['username'] ?></h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="../fungsi/proses.php?editAdmin" method="post">
-                                                    <div class="form-group">
-                                                        <label for="">Nama Admin</label>
-                                                        <input required type="text" name="nama_admin" placeholder="Nama Admin" value="<?php echo $row['nama'] ?>" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Daerah</label>
-                                                        <select class="form-control" name="daerah" id="" disabled>
-                                                            <option><?php echo $row['daerah'] ?></option>
-                                                        </select>
-                                                    </div>
+                                                <h4 class="modal-title">Reset Password</h4>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                                </form>
+                                                <a class="btn btn-warning" href="../fungsi/proses.php?resetPass=<?php echo $row['username'] ?>">Reset Password</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <?php } ?>
+                                
                             </td>
                         </tr>
                     <?php  }?>
@@ -133,6 +153,40 @@
                             <option value="<?php echo $row['nama_daerah'] ?>"><?php echo $row['nama_daerah'] ?></option>
                         <?php } ?>
                         </select>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addDesa">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Form Tambah Admin</h4>
+            </div>
+            <div class="modal-body">
+                <form action="../fungsi/proses.php?addDesa" method="post">
+                    <div class="form-group">
+                        <label for="">Nama Daerah</label>
+                        <input required type="text" name="daerah" placeholder="Nama Daerah" id="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Jenis Daerah</label>
+                        <select class="form-control" name="daerah" id="" required>
+                            <option value="">Pilih Daerah</option>
+                            <option value="Kelurahan">Kelurahan</option>
+                            <option value="Desa">Desa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nama Kepala Daerah</label>
+                        <input required type="text" name="kades" placeholder="Nama Kepala Daerah" id="" class="form-control">
                     </div>
             </div>
             <div class="modal-footer">

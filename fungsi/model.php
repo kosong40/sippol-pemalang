@@ -22,9 +22,21 @@
         $kueri = "SELECT*FROM daerah";
         return $kueri;
     }
+    function getOnline(){
+        $kueri = "SELECT*FROM admin WHERE status =1 AND level = 2";
+        return $kueri;
+    }
     function adminDesa()
     {
         $kueri = "SELECT*FROM admin where level = 2";
+        return $kueri;
+    }
+    function addDesa($daerah,$jenis,$kepala_daerah){
+        $kueri = "INSERT INTO daerah VALUES(null,'$daerah',$jenis,'$kepala_daerah')";
+        return $kueri;
+    }
+    function editDesa($kepala_daerah,$id){
+        $kueri = "UPDATE daerah SET kepala_daerah = '$kepala_daerah' WHERE id_daerah = $id";
         return $kueri;
     }
     function addAdminDesa($username,$password,$nama,$daerah){
@@ -37,6 +49,11 @@
     }
     function gantiProfil($user,$nama,$id){
         $kueri = "UPDATE admin SET username='$user',nama='$nama' WHERE id = $id";
+        return $kueri;
+    }
+    function resetPass($username){
+        $pass = password_hash($username,PASSWORD_BCRYPT);
+        $kueri = "UPDATE admin SET password = '$pass' WHERE username = '$username'";
         return $kueri;
     }
     
