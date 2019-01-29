@@ -1,1 +1,3 @@
-<h1>ANDA SALAH MASUK RUANGAN</h1>
+<div class="container fluid">
+    <h1 align="center">Maaf Bukan Wilayah Anda</h1>
+</div>

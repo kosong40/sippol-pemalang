@@ -58,9 +58,9 @@
     </div>
     <div class="col-sm-6">
         <br>
-        <h1 align="center" id="text-sispek"><b>SI PATEN PEMALANG</b></h1>
-        <h3 align="center" style="color:#e64a19"><b>Administrasi Elektronik</b></h3>
-        <h5 align="center" style="color:#e64a19">Sesi id = <?php echo $_SESSION['sesi_id'] ?></h5>
+        <h1 align="center" id="text-sispek"><b>SIPPOL PEMALANG</b></h1>
+        <h3 align="center" style="color:#e64a19"><b>Sistem Informasi Pelayanan Publik Online</b></h3>
+        <h5 align="center" style="color:#e64a19">Admin : <?php echo $_SESSION['daerah'] ?></h5>
     </div>
     <div class="col-sm-2">
     <br>
@@ -88,6 +88,7 @@
                 <li><a href="#" id="nav-text-small">Action</a></li>
               </ul>
             </li>
+    <?php if($_SESSION['level'] == 1){ ?>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nav-text"><span class="fa fa-book"></span>&nbsp;DATA <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
@@ -97,10 +98,13 @@
                     <li><a href="">Data Dibuang</a></li>
                 </ul>
             </li>
+    <?php }?>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nav-text"><span class="fa fa-wrench"></span>&nbsp;PENGATURAN<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
+                <?php if($_SESSION['level'] == 1){ ?>
                 <li><a href="?t=<?php echo $_SESSION["sesi_id"] ?>&p=desa-kelurahan" id="nav-text-small"><span class="fa fa-cog"></span>&nbsp;Akun Desa / Kelurahan </a></li>
+                <?php }?>
                 <li><a href="?t=<?php echo $_SESSION["sesi_id"] ?>&p=akun" id="nav-text-small"><span class="fa fa-user"></span>&nbsp;Pengaturan Akun </a></li>
               </ul>
             </li>

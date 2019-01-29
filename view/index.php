@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../aset/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="../aset/dist/css/skins/_all-skins.min.css">
-    <title>SI PATEN PEMALANG</title>
+    <title>SIPPOL PEMALANG</title>
     <style>
         #nav-text{
             font-size:20px;
@@ -40,8 +40,8 @@
     </div>
     <div class="col-sm-6">
         <br>
-        <h1 align="center" id="text-sispek"><b>SI PATEN PEMALANG</b></h1>
-        <h3 align="center" style="color:#e64a19"><b>Administrasi Elektronik</b></h3>
+        <h1 align="center" id="text-sispek"><b>SIPPOL PEMALANG</b></h1>
+        <h3 align="center" style="color:#e64a19"><b>Sistem Informasi Pelayanan Publik Online</b></h3>
     </div>
 </div>
 <div class="wrapper">
