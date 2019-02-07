@@ -71,7 +71,7 @@
             <h3>Daftar Admin</h3>
             <p>Tambah Admin <a href="#addAdmin" data-toggle="modal" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span></a></p>
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="data">
+                <table class="table table-bordered table-hover" id="admin">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -174,7 +174,7 @@
                 <form action="../fungsi/proses.php?addDesa" method="post">
                     <div class="form-group">
                         <label for="">Nama Daerah</label>
-                        <input required type="text" name="daerah" placeholder="Nama Daerah" id="" class="form-control">
+                        <input required type="text" name="nama_desa" placeholder="Nama Daerah" id="" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="">Jenis Daerah</label>

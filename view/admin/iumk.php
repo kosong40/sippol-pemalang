@@ -43,30 +43,130 @@
             Waktu Penyelesaian : Selambat-lambatnya 2 (dua) hari kerja setelah permohonan diterima lengkap
             </i>
             <br>
-            Biaya/Tarif : Tidak dipungut biaya
+            Biaya/Tarif : <b>Tidak dipungut biaya</b>
             </li>
         </ul>
         </div>
         <div class="col-sm-7">
             <?php if($_SESSION['level'] == 1){ ?>
-
+                <h2>Maaf hanya bisa diakses oleh admin desa saja</h2>
             <?php }else{ ?>
-                <form action="" method="post">
+                <form action="../fungsi/proses.php?addIumk" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="" class="label-control">Nama</label>
-                        <input type="text" name="" placeholder="Nama " class="form-control">
+                        <input type="text" required name="nama" placeholder="Nama " class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="" class="label-control">NIK</label>
-                        <input type="text" name="" placeholder="NIK " class="form-control">
+                        <label for="" class="label-control">No. KTP</label>
+                        <input type="text" required name="noktp" placeholder="No. KTP " class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="" class="label-control">No. Telepon</label>
-                        <input type="text" name="" placeholder="No. Telepon " class="form-control">
+                        <input type="text" required name="telepon" placeholder="No. Telepon " class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control" for="">Alamat</label>
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-11">
+                            <div class="form-group">
+                            <label for="" class="label-control">RT / RW</label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" required name="rt" placeholder="RT" class="form-control">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" required name="rw" placeholder="RW" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Desa / Kelurahan</label>
+                            <input type="text" required name="desa" placeholder="Desa / Kelurahan" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Kecamatan</label>
+                            <input type="text" required name="kecamatan" placeholder="Kecamatan" class="form-control">
+                        </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="label-control">Nama Usaha</label>
-                        <input type="text" name="" placeholder="Nama Usaha" class="form-control">
+                        <input type="text" required name="nama_usaha" placeholder="Nama Usaha" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control" for="alamat_usaha">Alamat Usaha</label>
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-11">
+                        <div class="form-group">
+                            <label for="" class="label-control">Desa / Kelurahan</label>
+                            <select required  name="desa_usaha" id="" class="form-control">
+                                <option value="">Pilih Desa / Kelurahan</option>
+                                <?php $daerah = query(daerah());while($row = fetch($daerah)){ ?>
+                                    <option value="<?php echo $row['nama_daerah'] ?>"><?php echo $row['nama_daerah'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Nama Jalan / Dusun</label>
+                            <input type="text" required name="nama_jalan" placeholder="Nama Jalan / Dusun" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Kode Pos</label>
+                            <input type="text" required name="kode_pos" placeholder="Kode Pos" class="form-control">
+                        </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                                <label for="" class="label-control">Sektor Usaha</label>
+                                <input type="text" required name="sektor_usaha" placeholder="Sektor Usaha" id="" class="form-control">
+                            </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Sarana yang digunakan</label>
+                            <input type="text" required name="sarana" placeholder="Sarana yang digunakan" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Jumlah Modal Usaha</label>
+                            <input type="text" required name="modal" placeholder="Jumlah Modal Usaha" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">NPWP</label>
+                            <input type="text" required name="npwp" placeholder="NPWP" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Klasifikasi Usaha</label>
+                            <select required name="klasifikasi usaha" class="form-control" id="">
+                                <option value="">Pilih</option>
+                                <option value="Mikro">Mikro</option>
+                                <option value="Kecil">Kecil</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Scan KTP</label>
+                            <input type="file" required name="scan_ktp" placeholder="scanKTP" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Scan Kartu Keluarga</label>
+                            <input type="file" required name="scan_kk" placeholder="scanKTP" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Scan Pengantar dari RT/RW</label>
+                            <input type="file" required name="scan_rtrw" placeholder="scanKTP" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Scan Formulir</label>
+                            <input type="file" required name="scan_formulir" placeholder="formulis" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="label-control">Foto 4x6</label>
+                            <input type="file" required name="foto" placeholder="foto" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Simpan</button>
                     </div>
                 </form>
             <?php } ?>

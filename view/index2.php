@@ -30,10 +30,11 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="../aset/komponen/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
+  <link rel="stylesheet" href="../aset/komponen/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="../aset/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="../aset/dist/css/skins/_all-skins.min.css">
-    <title><?php echo strtoupper($_GET['p'])." $role" ?></title>
+    <title><?php echo strtoupper(str_replace("-"," ",$_GET['p']))." $role" ?></title>
     <style>
         #nav-text{
             font-size:20px;
@@ -65,7 +66,6 @@
     <div class="col-sm-2">
     <br>
         <p>Data masuk hari ini</p>
-        <p>Data masuk kemarin</p>
         <p>Data Total</p>
         <?php if($_SESSION['level'] == 1){ ?>
         <p>Admin yang Online : <?php echo mysqli_num_rows(query(getOnline())) ?> </p>
@@ -143,6 +143,14 @@
 <script src="../aset/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../aset/dist/js/demo.js"></script>
+<script src="../aset/komponen/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../aset/komponen/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script>
+    $(function () {
+    $('#data').DataTable();
+    $('#admin').DataTable()
+    });
+</script>
 </body>
 </html>
     <?php }} ?>

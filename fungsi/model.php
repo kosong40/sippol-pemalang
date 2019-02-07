@@ -19,7 +19,7 @@
     }
     function daerah()
     {
-        $kueri = "SELECT*FROM daerah";
+        $kueri = "SELECT*FROM daerah ORDER BY nama_daerah ASC";
         return $kueri;
     }
     function getOnline(){

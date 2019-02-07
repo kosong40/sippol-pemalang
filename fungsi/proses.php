@@ -91,10 +91,11 @@ if(isset($_GET['resetPass'])){
     header("location:../view/index2.php?t=$token&p=desa-kelurahan");
 }
 if(isset($_GET['addDesa'])){
-    var_dump($_POST);
-    $nama_desa = no_sql($_POST['daerah']);
+    // var_dump($_POST);
+    // die();
+    $nama_desa = $_POST['nama_desa'];
     $jenis = null;
-    if($_POST['jenis'] == "Desa"){
+    if($_POST['daerah'] == "Desa"){
         $jenis = 2;
     }else{
         $jenis = 1;
@@ -108,6 +109,28 @@ if (isset($_GET['editDesa'])) {
     $id = $_GET['editDesa'];
     query(editDesa($kades,$id));
     header("location:../view/index2.php?t=$token&p=desa-kelurahan");
+}
+if(isset($_GET['addIumk'])){
+    // var_dump($_POST);
+    // var_dump($_FILES);
+    // die();
+    $ktp        = "../berkas/ktp/".basename($_FILES["scan_ktp"]["name"]);
+    $kk         = "../berkas/kk/".basename($_FILES["scan_kk"]["name"]);
+    $pengantar  = "../berkas/rtrw/".basename($_FILES["scan_rtrw"]["name"]);
+    $formulir   = "../berkas/formulir/".basename($_FILES["scan_formulir"]["name"]);
+    $foto       = "../berkas/foto/".basename($_FILES["foto"]["name"]);
+
+    $nama       =   no_sql($_POST['nama']);
+    $noktp      =   no_sql($_POST['noktp']);
+    $telepon    =   no_sql($_POST['telepon']);
+    $rt         =   no_sql($_POST['rt']);
+    $rw         =   no_sql($_POST['rw']);
+    $desa       =   no_sql($_POST['desa']);
+    $kecamatan  =   no_sql($_POST['kecamatan']);
+    $nama_usaha =   no_sql($_POST[''])
+
+    die();
+    
 }
 
 ?>
