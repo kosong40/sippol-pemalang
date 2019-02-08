@@ -5,5 +5,5 @@
     echo "<br>";
     echo "AdminBojongbata : ".password_hash("AdminBojongbata",PASSWORD_BCRYPT);
     echo "<br>";
-    
+    echo date("d-m-Y");
 ?>

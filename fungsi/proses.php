@@ -111,15 +111,16 @@ if (isset($_GET['editDesa'])) {
     header("location:../view/index2.php?t=$token&p=desa-kelurahan");
 }
 if(isset($_GET['addIumk'])){
-    // var_dump($_POST);
-    // var_dump($_FILES);
+    // header("location:location:../view/index2.php?t=$token&p=iumk&n=1");
+    // echo "Kok Gini";
     // die();
+
     $ktp        = "../berkas/ktp/".basename($_FILES["scan_ktp"]["name"]);
     $kk         = "../berkas/kk/".basename($_FILES["scan_kk"]["name"]);
-    $pengantar  = "../berkas/rtrw/".basename($_FILES["scan_rtrw"]["name"]);
+    $pengantar  = "../berkas/pengantar/".basename($_FILES["scan_rtrw"]["name"]);
     $formulir   = "../berkas/formulir/".basename($_FILES["scan_formulir"]["name"]);
     $foto       = "../berkas/foto/".basename($_FILES["foto"]["name"]);
-
+    $username   =   $_SESSION['username'];
     $nama       =   no_sql($_POST['nama']);
     $noktp      =   no_sql($_POST['noktp']);
     $telepon    =   no_sql($_POST['telepon']);
@@ -127,10 +128,27 @@ if(isset($_GET['addIumk'])){
     $rw         =   no_sql($_POST['rw']);
     $desa       =   no_sql($_POST['desa']);
     $kecamatan  =   no_sql($_POST['kecamatan']);
-    $nama_usaha =   no_sql($_POST[''])
-
-    die();
-    
+    $nama_usaha =   no_sql($_POST['nama_usaha']);
+    $desa_usaha =   no_sql($_POST['desa_usaha']);
+    $nama_jalan =   no_sql($_POST['nama_jalan']);
+    $kode_pos   =   no_sql($_POST['kode_pos']);
+    $sektor_usaha   =   no_sql($_POST['sektor_usaha']);
+    $modal      =   no_sql($_POST['modal']);
+    $npwp       =   no_sql($_POST['npwp']);
+    $tanggal    =   date("Y-m-d");
+    $klasifikasi_usaha = no_sql($_POST['klasifikasi_usaha']);
+    $Add = "INSERT INTO iumk VALUES(null,null,'$username','$nama','$noktp','$telepon','$rt','$rw','$desa','$kecamatan','$nama_usaha','$desa_usaha','$nama_jalan','$kode_pos','$sektor_usaha','$modal','$npwp','$klasifikasi_usaha','$ktp','$kk','$pengantar','$formulir','$foto','$tanggal','Belum Disetujui')";
+    $proses         = mysqli_query($koneksi,$Add);
+    if($proses){
+        move_uploaded_file($_FILES['scan_ktp']['tmp_name'],$ktp);
+        move_uploaded_file($_FILES['scan_kk']['tmp_name'],$kk);
+        move_uploaded_file($_FILES['scan_rtrw']['tmp_name'],$pengantar);
+        move_uploaded_file($_FILES['scan_formulir']['tmp_name'],$formulir);
+        move_uploaded_file($_FILES['foto']['tmp_name'],$foto);
+        header("location:../view/index2.php?t=$token&p=iumk&n=1");
+    }else{
+        header("location:../view/index2.php?t=$token&p=iumk&n=0");
+    }
 }
 
 ?>

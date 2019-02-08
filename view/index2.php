@@ -148,7 +148,8 @@
 <script>
     $(function () {
     $('#data').DataTable();
-    $('#admin').DataTable()
+    $('#admin').DataTable();
+    $('#iumk').DataTable();
     });
 </script>
 </body>

@@ -1,6 +1,29 @@
 <div class="container-fluid">
     <h1 align="center">Halaman Izin Usaha Mirko dan Kecil</h1>
     <br>
+
+    <?php
+        @$notif = $_GET['n'];
+        if(@$notif == 1){ ?>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> Sukses</h4>
+                Anda berhasil melakukan pengajuan surat Izin Usaha Mikro dan Kecil <br>
+                Mohon untuk menunggu konfirmasi dari Kecamatan
+            </div>
+        <?php }elseif(@$notif == 0){ ?>
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                Gagal melakukan proses pengajuan, Mohon untuk mengecek kembali
+            </div>
+        <?php }elseif(@$notif == 2){ ?>
+            
+        <?php }?>
+
+        <div style="padding-bottom:10px">
+            <a href="?t=<?php echo $_SESSION["sesi_id"] ?>&p=data-iumk&n=2"" class="btn btn-primary">Data Iumk</a>
+            <a href="?t=<?php echo $_SESSION["sesi_id"] ?>&p=iumk&n=2" class="btn btn-primary">Formulir Iumk</a>
+    </div>
     <div class="row">
         <div class="col-sm-5">
         <ul class="list-group">
@@ -138,7 +161,7 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="label-control">Klasifikasi Usaha</label>
-                            <select required name="klasifikasi usaha" class="form-control" id="">
+                            <select required name="klasifikasi_usaha" class="form-control" id="">
                                 <option value="">Pilih</option>
                                 <option value="Mikro">Mikro</option>
                                 <option value="Kecil">Kecil</option>
@@ -166,7 +189,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Simpan</button>
+                       <input type="submit" value="Proses" class="btn btn-primary form-control">
                     </div>
                 </form>
             <?php } ?>

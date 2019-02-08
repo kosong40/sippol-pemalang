@@ -56,6 +56,10 @@
         $kueri = "UPDATE admin SET password = '$pass' WHERE username = '$username'";
         return $kueri;
     }
+    function select($table){
+        $kueri   =   "SELECT*FROM $table";
+        return $kueri;
+    }
     
     $data = [
         'admin'     => query(adminDesa()),
