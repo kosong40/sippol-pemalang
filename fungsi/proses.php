@@ -58,7 +58,7 @@ if(isset($_GET['logout'])){
     $username = $_SESSION['username'];
     query(logout($username));
     session_destroy();
-    header("location:../view/index.php");
+    header("location:../view/index.php?p=beranda");
 }
 
 if(isset($_GET['addAdmin'])){
@@ -111,10 +111,6 @@ if (isset($_GET['editDesa'])) {
     header("location:../view/index2.php?t=$token&p=desa-kelurahan");
 }
 if(isset($_GET['addIumk'])){
-    // header("location:location:../view/index2.php?t=$token&p=iumk&n=1");
-    // echo "Kok Gini";
-    // die();
-
     $ktp        = "../berkas/ktp/".basename($_FILES["scan_ktp"]["name"]);
     $kk         = "../berkas/kk/".basename($_FILES["scan_kk"]["name"]);
     $pengantar  = "../berkas/pengantar/".basename($_FILES["scan_rtrw"]["name"]);
@@ -137,7 +133,8 @@ if(isset($_GET['addIumk'])){
     $npwp       =   no_sql($_POST['npwp']);
     $tanggal    =   date("Y-m-d");
     $klasifikasi_usaha = no_sql($_POST['klasifikasi_usaha']);
-    $Add = "INSERT INTO iumk VALUES(null,null,'$username','$nama','$noktp','$telepon','$rt','$rw','$desa','$kecamatan','$nama_usaha','$desa_usaha','$nama_jalan','$kode_pos','$sektor_usaha','$modal','$npwp','$klasifikasi_usaha','$ktp','$kk','$pengantar','$formulir','$foto','$tanggal','Belum Disetujui')";
+    $sarana     =   no_sql($_POST['sarana']);
+    $Add = "INSERT INTO iumk VALUES(null,null,'$username','$nama','$noktp','$telepon','$rt','$rw','$desa','$kecamatan','$nama_usaha','$desa_usaha','$nama_jalan','$kode_pos','$sektor_usaha','$modal','$npwp','$klasifikasi_usaha','$sarana','$ktp','$kk','$pengantar','$formulir','$foto','$tanggal','Belum Disetujui')";
     $proses         = mysqli_query($koneksi,$Add);
     if($proses){
         move_uploaded_file($_FILES['scan_ktp']['tmp_name'],$ktp);
@@ -149,6 +146,17 @@ if(isset($_GET['addIumk'])){
     }else{
         header("location:../view/index2.php?t=$token&p=iumk&n=0");
     }
+}
+if(isset($_GET['noIumk'])){
+    $id = no_sql($_GET['noIumk']);
+    $no = no_sql($_POST['nomor_surat']);
+    query(AddNoIumk($no,$id));
+    header("location:../view/index2.php?t=$token&p=detail-iumk&i=$id");
+}
+if(isset($_GET['accIumk'])){
+    $id     =   no_sql($_GET['accIumk']);
+    query("UPDATE iumk SET status = 'Sudah Disetujui' WHERE id_iumk = $id");
+    header("location:../view/index2.php?t=$token&p=detail-iumk&i=$id");
 }
 
 ?>

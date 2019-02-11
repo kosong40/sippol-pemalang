@@ -138,7 +138,7 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="label-control">Kode Pos</label>
-                            <input type="text" required name="kode_pos" placeholder="Kode Pos" class="form-control">
+                            <input type="number" required name="kode_pos" placeholder="Kode Pos" class="form-control">
                         </div>
                             </div>
                             
@@ -153,7 +153,7 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="label-control">Jumlah Modal Usaha</label>
-                            <input type="text" required name="modal" placeholder="Jumlah Modal Usaha" id="" class="form-control">
+                            <input type="number" required name="modal" placeholder="Jumlah Modal Usaha" id="" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="" class="label-control">NPWP</label>

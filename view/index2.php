@@ -65,11 +65,26 @@
     </div>
     <div class="col-sm-2">
     <br>
-        <p>Data masuk hari ini</p>
-        <p>Data Total</p>
+        <table>
+            <tr>
+                <td>Data masuk hari ini</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><?php $tanggal    =   date("Y-m-d");echo mysqli_num_rows(query(select("iumk WHERE tanggal = '$tanggal'"))) ?></td>
+            </tr>
+            <tr>
+                <td>Total data</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><?php echo mysqli_num_rows(query(select("iumk"))) ?></td>
+            </tr>
+        
         <?php if($_SESSION['level'] == 1){ ?>
-        <p>Admin yang Online : <?php echo mysqli_num_rows(query(getOnline())) ?> </p>
+        <tr>
+                <td>Admin Online</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><?php echo mysqli_num_rows(query(getOnline())) ?></td>
+            </tr>
         <?php }?>
+        </table>
     </div>
 </div>
 <div class="wrapper">

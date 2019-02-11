@@ -1,6 +1,6 @@
 <?php 
     function koneksi(){
-        return  $koneksi    =   mysqli_connect('localhost','root','','paten_pemalang');;
+        return  $koneksi = mysqli_connect('localhost','root','','paten_pemalang');;
     }
     function query($kueri){
         return mysqli_query(koneksi(),$kueri);
@@ -8,7 +8,10 @@
     function fetch($kueri){
         return mysqli_fetch_array($kueri);
     }
-
+    function select($table){
+        $kueri   =   "SELECT*FROM $table";
+        return $kueri;
+    }
     function logout($username){
         $kueri = "UPDATE admin SET status = 0, ses_id = null WHERE username = '$username'";
         return $kueri;
@@ -56,10 +59,12 @@
         $kueri = "UPDATE admin SET password = '$pass' WHERE username = '$username'";
         return $kueri;
     }
-    function select($table){
-        $kueri   =   "SELECT*FROM $table";
+
+    function AddNoIumk($no_surat,$id){
+        $kueri = "UPDATE iumk SET no_surat ='$no_surat' WHERE id_iumk=$id ";
         return $kueri;
     }
+   
     
     $data = [
         'admin'     => query(adminDesa()),

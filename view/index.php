@@ -49,7 +49,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-            <a href="#" id="nav-text" class="navbar-brand"><span class="fa fa-home"></span>&nbsp;BERANDA</a>
+            <a href="?p=beranda" id="nav-text" class="navbar-brand"><span class="fa fa-home"></span>&nbsp;BERANDA</a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
             </button>
@@ -60,7 +60,10 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nav-text"><span class="fa fa-info"></span>&nbsp;INFORMASI<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
+                <li><a href="#">Izin Mendirikan Bangunan</a></li>
+                <li><a href="#">Izin Reklame</a></li>
+                <li><a href="?p=iumk">Izin Usaha Mikro dan Kecil</a></li>
+                <li><a href="">Izin Pariwisata</a></li>
               </ul>
             </li>
             <li class="dropdown user user-menu">
@@ -93,31 +96,19 @@
   <!-- Full Width Column -->
   <div class="content-wrapper">
     <div class="container-fluid">
-        <br>
-            <center><img src="../aset/img/pemalang.jpg" alt=""></center>
-        <br>
-    </div>
-    <div class="conteiner"><h4 align="center"><b>----- Layanan -----</b></h4></div>
-    <div class="row">
-    <div class="col-sm-3">
-            <img src="../aset/img/no_img.svg" class="img-rounded img-responsive" alt="">
-            <h4 align="center">Izin Mendirikan Bangunan</h4>
-        </div>
-        <div class="col-sm-3">
-            <img src="../aset/img/no_img.svg" class="img-rounded img-responsive" alt="">    
-            <h4 align="center">Izin Reklame</h4>
-        </div>
-        <div class="col-sm-3">
-            <img src="../aset/img/no_img.svg" class="img-rounded img-responsive" alt="">    
-            <h4 align="center">Izin Usaha Mikro dan Kecil</h4>
-        </div>
-        <div class="col-sm-3">
-            <img src="../aset/img/no_img.svg" class="img-rounded img-responsive" alt="">    
-            <h4 align="center">Izin Pariwisata</h4>
-        </div>
+    <?php
+            $page = $_GET['p'];
+            include("home/$page.php");
+        ?>
     </div>
   </div>
-  <!-- /.content-wrapper -->
+  <footer  class="main-footer" style="background-color:#3C8DBC;">
+       <div>
+          <center><span style="color:white">
+              Dibuat oleh KKN TIM I Universitas Diponegoro Tahun 2019
+          </span></center>
+       </div>
+  </footer>
 
 </div>
 <!-- ./wrapper -->
