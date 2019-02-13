@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1 align="center">Halaman Izin Usaha Mirko dan Kecil</h1>
+    <h1 align="center">Halaman Izin Usaha Mikro dan Kecil</h1>
     <br>
     <div style="padding-bottom:10px">
             <a href="?t=<?php echo $_SESSION["sesi_id"] ?>&p=data-iumk&n=2"" class="btn btn-primary">Data Iumk</a>

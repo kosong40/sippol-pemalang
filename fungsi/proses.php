@@ -44,12 +44,12 @@ if(isset($_GET['login']) == "true"){
                 header("location:../view/index2.php?t=$sesi_id&p=beranda");
             }else{
                 echo "<script>alert('Username atau Password Salah')</script>";
-                header("location:../view/index.php");
+                header("location:../view/index.php?p=beranda");
             }
         }
     }else{
         echo "<script>alert('Username atau Password Salah')</script>";   
-        header("location:../view/index.php");
+        header("location:../view/index.php?p=beranda");
     }
 }
 if(isset($_GET['logout'])){

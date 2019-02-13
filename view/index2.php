@@ -60,7 +60,7 @@
     <div class="col-sm-6">
         <br>
         <h1 align="center" id="text-sispek"><b>SIPPOL PEMALANG</b></h1>
-        <h3 align="center" style="color:#e64a19"><b>Sistem Informasi Pelayanan Publik Online</b></h3>
+        <h3 align="center" style="color:#e64a19"><b>Sistem Informasi Pelayanan Publik Online <br>Kecamatan Pemalang</b></h3>
         <h5 align="center" style="color:#e64a19">Admin : <?php echo $_SESSION['daerah'] ?></h5>
     </div>
     <div class="col-sm-2">

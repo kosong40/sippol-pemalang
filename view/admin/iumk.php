@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1 align="center">Halaman Izin Usaha Mirko dan Kecil</h1>
+    <h1 align="center">Halaman Izin Usaha Mikro dan Kecil</h1>
     <br>
 
     <?php
